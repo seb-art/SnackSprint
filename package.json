@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "sonner": "^1.4.41"
+    "@auth0/auth0-react": "^2.2.4",
+    "dotenv": "^16.4.5"
   }
 }
