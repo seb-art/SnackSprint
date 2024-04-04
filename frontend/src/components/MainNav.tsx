@@ -12,8 +12,7 @@ function MainNav() {
         <div>
           <Button
             variant="ghost"
-            className="
-          ont-bold hover:text-green-500 hover:bg-white"
+            className="font-bold hover:text-green-500 hover:bg-white"
             onClick={async () => await loginWithRedirect()}
           >
             Sign In
