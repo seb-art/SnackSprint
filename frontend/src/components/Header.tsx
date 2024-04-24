@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import MobileNav from "./MobileNav";
 import MainNav from "./MainNav";
 
-function Header() {
+const Header = () => {
   return (
     <div className="border-b-2 border-b-green-500 py-6">
       <div className="container mx-auto flex justify-between items-center">
         <Link
           to="/"
-          className="text-5xl font-bold tracking-tight text-green-700"
+          className="text-4xl font-bold tracking-tight text-green-500"
         >
           SnackSprint
         </Link>
@@ -21,6 +21,6 @@ function Header() {
       </div>
     </div>
   );
-}
+};
 
 export default Header;

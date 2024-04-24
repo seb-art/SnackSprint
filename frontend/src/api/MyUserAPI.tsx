@@ -8,7 +8,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const useGetMyUser = () => {
   const { getAccessTokenSilently } = useAuth0();
 
-  const getMyUserRequest = async ():Promise<User> => {
+  const getMyUserRequest = async (): Promise<User> => {
     const accessToken = await getAccessTokenSilently();
 
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {
@@ -62,6 +62,7 @@ export const useCreateMyUser = () => {
       throw new Error("Failed to create user");
     }
   };
+
   const {
     mutateAsync: createUser,
     isLoading,
@@ -77,7 +78,7 @@ export const useCreateMyUser = () => {
   };
 };
 
-type updateMyUserRequest = {
+type UpdateMyUserRequest = {
   name: string;
   addressLine1: string;
   city: string;
@@ -87,12 +88,13 @@ type updateMyUserRequest = {
 export const useUpdateMyUser = () => {
   const { getAccessTokenSilently } = useAuth0();
 
-  const updateMyUserRequest = async (formData: updateMyUserRequest) => {
+  const updateMyUserRequest = async (formData: UpdateMyUserRequest) => {
     const accessToken = await getAccessTokenSilently();
+
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {
       method: "PUT",
       headers: {
-        Authorization: `Beare ${accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
@@ -114,8 +116,9 @@ export const useUpdateMyUser = () => {
   } = useMutation(updateMyUserRequest);
 
   if (isSuccess) {
-    toast.success("User profile updated");
+    toast.success("User profile updated!");
   }
+
   if (error) {
     toast.error(error.toString());
     reset();

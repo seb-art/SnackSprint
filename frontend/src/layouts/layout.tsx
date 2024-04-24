@@ -7,7 +7,7 @@ type Props = {
   showHero?: boolean;
 };
 
-function Layout({ children, showHero = false }: Props) {
+const Layout = ({ children, showHero = false }: Props) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -16,6 +16,6 @@ function Layout({ children, showHero = false }: Props) {
       <Footer />
     </div>
   );
-}
+};
 
 export default Layout;

@@ -19,6 +19,7 @@ const createCurrentUser = async (req: Request, res: Response) => {
   try {
     const { auth0Id } = req.body;
     const existingUser = await User.findOne({ auth0Id });
+
     if (existingUser) {
       return res.status(200).send();
     }
@@ -26,10 +27,10 @@ const createCurrentUser = async (req: Request, res: Response) => {
     const newUser = new User(req.body);
     await newUser.save();
 
-    res.status(201).json(newUser.toObject);
+    res.status(201).json(newUser.toObject());
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Error creating the user" });
+    res.status(500).json({ message: "Error creating user" });
   }
 };
 
@@ -52,7 +53,7 @@ const updateCurrentUser = async (req: Request, res: Response) => {
     res.send(user);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "There was an Error Updating the user" });
+    res.status(500).json({ message: "Error updating user" });
   }
 };
 
