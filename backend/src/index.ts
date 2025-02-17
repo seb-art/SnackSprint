@@ -20,7 +20,14 @@ cloudinary.config({
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://snacksprint-frontend.onrender.com",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true,
+  })
+);
+
 
 app.use("/api/order/checkout/webhook", express.raw({ type: "*/*" }));
 
